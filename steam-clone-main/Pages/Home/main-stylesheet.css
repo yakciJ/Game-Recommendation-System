@@ -1,3 +1,39 @@
+.title{
+    margin-left: 265px;
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: white;
+}
+.relatedContent{
+    display: flex;
+    align-items:left;
+    margin-left: 265px;
+    color: white;
+    justify-content: space-between; 
+    width: 950px;
+}
+
+.gameImage{
+    height: auto;
+    width: auto;
+}
+
+.games img{
+    width: 150px; /* Adjust the width as needed */
+    height: 85px; /* Automatically adjust the height to maintain aspect ratio */
+    border-bottom: 1px solid #ccc;
+}
+
+.games h3{
+    font-size: 16px;
+    width: 150px;
+    text-align: center;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+
 .darkNav{
     background-color: #171a21;
 }
