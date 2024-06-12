@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="product-stylesheet.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script><script src="product-js.js"></script>
+         <script src="product-js.js"></script>
+
+        <nav class="d-flex navbar navbar-expand-md darkNav navbar-dark">
+            <!-- Toggler/collapsibe Button -->
+            <span class="d-md-none d-block" style="cursor:pointer" onclick="openNav()"><img width="30px" height="30px" src="https://icon-library.com/images/hamburger-menu-icon-png-white/hamburger-menu-icon-png-white-10.jpg"></span>
+
+            <div id="myNav" class="overlay">
+              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><img width="30px" height="30px" src="https://icon-library.com/images/hamburger-menu-icon-png-white/hamburger-menu-icon-png-white-10.jpg"></a>
+              <div class="overlay-content">
+                <ul class="navbar-nav pl-4 pt-1">
+                  <li class="nav-item dropdown">
+                      <a class="nav-link" href="#" data-toggle="dropdown">
+                        Store
+                      </a>
+                      <div style="background-color: #171a21;" class="dropdown-menu">
+                        <a class="menuItem" href="../Home/home.html">Home</a>
+                        <a class="menuItem" href="#">Discovery Queue</a>
+                        <a class="menuItem" href="#">Wishlist</a>
+                        <a class="menuItem" href="#">Points Shop</a>
+                        <a class="menuItem" href="#">News</a>
+                        <a class="menuItem" href="#">Stats</a>
+                      </div>
+                    </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">Support</a>
+                    </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link" href="#">Account</a>
+  
+                    <div style="background-color: #171a21;" class="dropdown-menu">
+                      <a class="menuItem" href="#">Login</a>
+                      <a class="menuItem" href="#">Sign Up</a>
+                    </div>
+                  </li>
+                  
+                  <li class="nav-item">
+                    <a class="nav-link" href="../About/about.html">About</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+              </button> -->
+        <div class="mx-auto bg">
+            <a class="float-left" href="../Home/home.html"><img
+                class="logoBig" src="https://store.cloudflare.steamstatic.com/public/shared/images/header/logo_steam.svg?t=962016"></a>
+            
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+              <ul class="navbar-nav pt-1">
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" data-toggle="dropdown">
+                      Store
+                    </a>
+                    <div style="background-color: #171a21;" class="dropdown-menu">
+                      <a class="menuItem" href="#">Home</a>
+                      <a class="menuItem" href="#">Discovery Queue</a>
+                      <a class="menuItem" href="#">Wishlist</a>
+                      <a class="menuItem" href="#">Points Shop</a>
+                      <a class="menuItem" href="#">News</a>
+                      <a class="menuItem" href="#">Stats</a>
+                    </div>
+                  </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Support</a>
+                  </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link" href="#">Account</a>
+
+                  <div style="background-color: #171a21;" class="dropdown-menu">
+                    <a class="menuItem" href="#">Login</a>
+                    <a class="menuItem" href="#">Sign Up</a>
+                  </div>
+                </li>
+                
+                <li class="nav-item">
+                  <a class="nav-link" href="../About/about.html">About</a>
+                </li>
+              </ul>
+            </div>
+        </div>
+
+        <button type="button" class="d-none d-md-block btn btn-success" data-target="#">
+            <img width="15px" height="15px" src="https://img.icons8.com/material-sharp/256/download--v1.png">Install Steam</button>
+          </nav>
+    </head>
+    
+    <body id="body" style="background-color: #1b2838;">
+      <div class="content1">
+      <p class="nameGame">
+        Galactic Bowling
+      </p>
+        <div class="bg">
+            <!--Game Highlights Container-->
+            <div id="game-highlight-div" class="container" style=" width: 60%; height: 470px; position: relative; background-color: #0e151d; padding: 0px;">
+              
+                <div style="float: left; width: 60%; height: 100%;" id="demo" class="carousel slide carousel-fade vid-carousel" data-ride="carousel" data-interval="false">
+
+          <!-- Indicators -->
+          
+          
+          <!-- The slideshow -->
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+                <video controls autoplay muted id="myVideo" width="100%" height="100%">
+                    <source src="http://cdn.akamai.steamstatic.com/steam/apps/256863704/movie_max.mp4?t=1638854607" type="video/mp4">
+                  </video>
+            </div>
+            <div class="carousel-item">
+              <img src="https://cdn.akamai.steamstatic.com/steam/apps/20200/0000005994.1920x1080.jpg?t=1640121033">
+            </div>
+            <div class="carousel-item">
+              <img src="https://cdn.akamai.steamstatic.com/steam/apps/20200/0000005992.1920x1080.jpg?t=1640121033">
+            </div>
+            <div class="carousel-item">
+                <img src="https://cdn.akamai.steamstatic.com/steam/apps/20200/0000006011.1920x1080.jpg?t=1640121033">
+              </div>
+          </div>
+
+          <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active" style="background-image: url(https://cdn.akamai.steamstatic.com/steam/apps/20200/0000005993.1920x1080.jpg?t=1640121033);"></li>
+            <li data-target="#demo" data-slide-to="1" style="background-image: url(https://cdn.akamai.steamstatic.com/steam/apps/20200/0000005994.1920x1080.jpg?t=1640121033);"></li>
+            <li data-target="#demo" data-slide-to="2" style="background-image: url(https://cdn.akamai.steamstatic.com/steam/apps/20200/0000005992.1920x1080.jpg?t=1640121033);"></li>
+            <li data-target="#demo" data-slide-to="3" style="background-image: url(https://cdn.akamai.steamstatic.com/steam/apps/20200/0000006011.1920x1080.jpg?t=1640121033);"></li>
+          </ul>
+          
+          <!-- Left and right controls -->
+          <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+          <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </a>
+        </div>
+
+        <div id="game-highlight" style="display: inline-block; width: 40%; height: 100%; padding-left: 1%;">
+            <img class="game_header_image_full" src="https://cdn.akamai.steamstatic.com/steam/apps/20200/header.jpg?t=1640121033"
+            style="width: 100%;">
+            
+            <p class="smallFont">
+              Galactic Bowling is an exaggerated and stylized bowling game with an intergalactic twist. Players will engage in fast-paced single and multi-player competition while being submerged in a unique new universe filled with over-the-top humor, wild characters, unique levels, and addictive game play. The title is aimed at players of all ages and skill sets. Through accessible and intuitive controls and game-play, Galactic Bowling allows you to jump right into the action.
+                <br> 
+                <br>
+                <div class="container2">
+                <ol class="tinyFont" display: inline-block;>
+                    <li>REREALSE DATE:</li>
+                    <li>DEVELOPER:</li>
+                    <li>PUBLISHER:</li>
+                    <li>CATEGORIES:</li>
+                    <li>GENRES:</li>
+                    <li>TAGS:</li>
+                  </ol>
+                  <ol class="gameDetail" display: inline-block;>
+                    <li>Oct 21, 2008</li>
+                    <li>Perpetual FX Creative</li>
+                    <li>Perpetual FX Creative</li>
+                    <li class="categories">Single-player,Multi-player,Steam Achievements,Partial Controller Support</li>
+                    <li class="categories">Casual,Indie,Sports</li>
+                    <li class="categories">Indie,Casual,Sports,Bowling</li>
+                  </ol>
+              </div>
+            </p>
+        </div>
+
+                
+        </div>
+
+        <div class="container" id="game-price" style="
+        width: 60%; height: 80px; background-image: linear-gradient(to right, rgb(45, 61, 74) , rgb(87, 101, 116));">
+            <div class="smallFont" style="display: inline-block; font-weight: 600; font-size: 20px; padding-left: 5px; margin-top: 25px;">
+                Purchase Galactic Bowling
+            </div>
+            
+            <div id="price" style="background-color: black; float: right; padding: 5px; margin-top: 20px;">
+                    <span style="color: #c5d3de; position: relative; top: 8px; padding-right: 12px;">$19.99 USD</span>
+
+                <div id="btn-buy" style="float: right;">
+                    <a href="../Checkout/checkout.html">
+                      <button type="button" class="btn btn-success"><span>Buy Game</span></button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- BAT DAU RECOMMENDED -->
+        <div class="title">Các game liên quan</div>
+        <div class="relatedContent">
+          <div class="games">
+            <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/655370/header.jpg?t=1617500526" alt="Image 1">
+            <h3>Train Bandit</h3>
+          </div>
+          <div class="games">
+            <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/1732930/header.jpg?t=1637149386" alt="Image 1">
+            <h3>Jolt Project</h3>
+          </div>
+          <div class="games">
+            <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/1355720/header.jpg?t=1639875115" alt="Image 1">
+            <h3>Henosis™</h3>
+          </div>
+          <div class="games">
+            <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/20200/0000005688.1920x1080.jpg?t=1640121033" alt="Image 1">
+            <h3>Game 4</h3>
+          </div>
+          <div class="games">
+            <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/20200/0000005688.1920x1080.jpg?t=1640121033" alt="Image 1">
+            <h3>Game 5</h3>
+          </div>
+        </div>
+        <div class="title">Các game đang thịnh hành</div>
+        <div class="relatedContent">
+          <div class="games">
+            <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
+            <h3>Hero of the Kingdom II</h3>
+          </div>
+          <div class="games">
+            <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/20200/0000005688.1920x1080.jpg?t=1640121033" alt="Image 1">
+            <h3>Game 2</h3>
+          </div>
+          <div class="games">
+            <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/20200/0000005688.1920x1080.jpg?t=1640121033" alt="Image 1">
+            <h3>Game 3</h3>
+          </div>
+          <div class="games">
+            <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/20200/0000005688.1920x1080.jpg?t=1640121033" alt="Image 1">
+            <h3>Game 4</h3>
+          </div>
+          <div class="games">
+            <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/20200/0000005688.1920x1080.jpg?t=1640121033" alt="Image 1">
+            <h3>Game 5</h3>
+          </div>
+        </div>
+        <div class="title">Người dùng khác cũng thích</div>
+        <div class="relatedContent">
+          <div class="games">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/20200/0000005688.1920x1080.jpg?t=1640121033" alt="Image 1">
+            <h3>Game 1</h3>
+          </div>
+          <div class="games">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/20200/0000005688.1920x1080.jpg?t=1640121033" alt="Image 1">
+            <h3>Game 2</h3>
+          </div>
+          <div class="games">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/20200/0000005688.1920x1080.jpg?t=1640121033" alt="Image 1">
+            <h3>Game 3</h3>
+          </div>
+          <div class="games">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/20200/0000005688.1920x1080.jpg?t=1640121033" alt="Image 1">
+            <h3>Game 4</h3>
+          </div>
+          <div class="games">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/20200/0000005688.1920x1080.jpg?t=1640121033" alt="Image 1">
+            <h3>Game 5</h3>
+          </div>
+        </div>
+    
+    <div class="card-footer" style="background-color: #313234; width: 100%; height:100px; padding: 20px 350px; color: whitesmoke;
+      overflow: hidden; position: relative;">
+        <div style="float: left; padding-right: 10px; height: 100%;">
+          <img  src="https://store.cloudflare.steamstatic.com/public/images/footerLogo_valve_new.png" width="88px" height="25px" alt="Valve Software">
+        </div>
+        <div style="float: right; padding-left: 10px; height: 100%;">
+          <img  src="https://store.cloudflare.steamstatic.com/public/images/v6/logo_steam_footer.png" alt="Valve Software" width="92px" height="26px">
+        </div>
+      <span>
+        © 2023 Valve Corporation. All rights reserved. All trademarks are property of their respective owners in the US and other countries
+        <br>
+        VAT included in all prices where applicable.
+      </span>
+      </div>
+    </div>
+    </body>
+</html>
