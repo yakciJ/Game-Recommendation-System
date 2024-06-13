@@ -1,3 +1,7 @@
+.carousel-control-next, .carousel-control-prev{
+    height: 300px;
+}
+
 .gameImage{
     height: auto;
     width: auto;
@@ -346,6 +350,15 @@ a :hover> .sidebar{
     font-size: 15px;
     color: #50616d;
     font-weight: 500;
+}
+
+.abc ul{
+    align-content: center;
+}
+
+.carousel-indicators{
+    transform: translateX(-55px);
+    width: 500px;
 }
 
 .carousel-indicators li{
