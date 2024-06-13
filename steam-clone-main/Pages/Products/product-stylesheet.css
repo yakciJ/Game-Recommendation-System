@@ -1,3 +1,32 @@
+.searchButton{
+    margin-top: 6px;
+    height: 31px;
+    width: 35px;
+    margin-left: -51px;
+    border: none;
+}
+
+.searchButton img{
+    margin-top: -2px;
+}
+
+.searchBar input::placeholder {
+    color: white;
+}
+
+.searchBar input[type=text] {
+    background-color: #316282;
+    color: white;
+    float: right;
+    padding: 6px;
+    border: none;
+    margin-left: 15px;
+    margin-top: 5px;
+    margin-right: 16px;
+    font-size: 14px;
+    border-radius: 3%;
+  }
+
 .carousel-control-next, .carousel-control-prev{
     height: 300px;
 }
