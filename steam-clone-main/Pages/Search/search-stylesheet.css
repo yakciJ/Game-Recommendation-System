@@ -1,6 +1,68 @@
 #menu{
     padding-left: 150px;
 }
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.main-content{
+    flex: 1;
+}
+
+.gameName{
+    font-size: 25px;
+    padding-left: 10px;
+}
+
+.gameCategories{
+    font-size: 14px;
+    padding-left: 10px;
+    color: #3786c6;
+}
+
+.box{
+    background-color: #2c3e53;
+    width: 900px;
+    margin-left: 350px;
+    padding: 5px;
+}
+
+a{
+    text-decoration: none !important;
+}
+
+.box li{
+    margin: 5px;
+}
+
+.mini-box{
+    list-style-type: none;
+    background-color: #1b2838;
+    padding: 5px;
+
+}
+.mini-box a h1, a h2{
+    color: white;
+    text-decoration: none;
+    text-decoration-color:white;
+}
+
+.mini-box a{
+    display: flex;
+    flex-direction: row;
+}
+
+.mini-box img{
+    height: 100px;
+    width: 200px;
+}
+
+.gameInfo{
+    display: flex;
+    flex-direction: column;
+}
+
 .searchButton{
     margin-top: 6px;
     height: 31px;
@@ -56,6 +118,7 @@ margin-right: 16px;
 font-size: 14px;
 border-radius: 3%;
 }
+
 
 .carousel-control-next, .carousel-control-prev{
     height: 300px;
@@ -182,11 +245,6 @@ a {
     text-decoration: none;
 }
 
-a :hover{
-    transition: 0.3s;
-    text-decoration: none;
-    color: whitesmoke;
-}
 
 
 .menuItem{
@@ -290,20 +348,7 @@ a :hover{
     margin-top: 30px;
   }
   
-  .overlay a {
-    padding: 8px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    
-    display: block;
-    transition: 0.3s;
-  }
   
-  .overlay a:hover, .overlay a:focus {
-    color: #f1f1f1;
-    text-decoration: none;
-  }
   
   .overlay .closebtn {
     position: absolute;
@@ -339,10 +384,7 @@ a :hover{
     color: whitesmoke;
 }
 
-a :hover> .sidebar{
-    text-decoration: none;
-    color: #ccdecc;
-}
+
 
 .smallCarouselImg{
     display: inline-block; 

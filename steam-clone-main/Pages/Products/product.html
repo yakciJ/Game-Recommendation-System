@@ -10,7 +10,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script><script src="product-js.js"></script>
          <script src="product-js.js"></script>
 
-        <nav class="d-flex navbar navbar-expand-md darkNav navbar-dark">
+        <nav id="menu" class="d-flex navbar navbar-expand-md darkNav navbar-dark">
             <!-- Toggler/collapsibe Button -->
             <span class="d-md-none d-block" style="cursor:pointer" onclick="openNav()"><img width="30px" height="30px" src="https://icon-library.com/images/hamburger-menu-icon-png-white/hamburger-menu-icon-png-white-10.jpg"></span>
 
@@ -88,12 +88,10 @@
                 <li class="nav-item">
                   <a class="nav-link" href="../About/about.html">About</a>
                 </li>
-                <li class="searchBar">
-                  <input type="text" placeholder="Search..">
-                </li>
-                <li class="searchBar">
-                  <button style="background-color: #316282;" class="searchButton" type="submit"><img width="10px" height="10px" src="https://img.icons8.com/material-rounded/256/search.png"></button>
-                </li>
+                <form action="javascript:void(0);" class="searchBar">
+                  <input id="searchInput" type="text" placeholder="Search..">
+                  <button style="background-color: #316282;" class="searchButton" onclick="redirectToProductPage()" type="button"><img width="10px" height="10px" src="https://img.icons8.com/material-rounded/256/search.png"></button>
+                </form>
               </ul>
             </div>
         </div>

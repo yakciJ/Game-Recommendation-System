@@ -144,10 +144,11 @@
                           <a class="nav-link navBarItem" href="#">Labs</a>
                         </li>
                       </ul>
-
-                      <form class="form-inline ml-auto" action="#">
-                        <input class="form-control" type="text" placeholder="Search">
-                        <button style="background-color: #8080ef9c;" class="btn" type="submit"><img width="15px" height="15px" src="https://img.icons8.com/material-rounded/256/search.png"></button>
+                      <form class="form-inline ml-auto" action="javascript:void(0);">
+                        <input id="searchInput" class="form-control" type="text" placeholder="Search">
+                        <button style="background-color: #8080ef9c;" onclick="redirectToProductPage()" class="btn" type="button">
+                          <img width="15px" height="15px" src="https://img.icons8.com/material-rounded/256/search.png">
+                        </button>
                       </form>
                   </nav>
             </div>

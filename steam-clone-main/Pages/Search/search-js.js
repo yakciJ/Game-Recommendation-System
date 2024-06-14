@@ -14,8 +14,3 @@ function openNav() {
     elements[i].style.opacity='100%';
     }
   }
-  function redirectToProductPage() {
-    const searchInput = document.getElementById('searchInput').value;
-    console.log(searchInput)
-    window.location.href = '../../Pages/Search/search.html';
-  }
