@@ -135,7 +135,7 @@ border-radius: 3%;
     font-size: 24px;
     color: white;
 }
-.otherUserLike, .topGame, .relatedContent{
+.devGame, .tagGame1, .tagGame2, .relatedContent{
     display: flex;
     align-items:left;
     max-width: 960px;

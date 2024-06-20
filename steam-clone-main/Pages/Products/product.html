@@ -211,7 +211,7 @@
         <!-- BAT DAU RECOMMENDED -->
         <div class="title">Các game liên quan</div>
         <div class="slideshow-container">
-          <div class="relatedContent">
+          <div class="relatedContent" id="relatedContent">
             <div class="games">
               <a href="../Products/product.html">
                 <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/655370/header.jpg?t=1617500526" alt="Image 1">
@@ -273,11 +273,13 @@
               </a>
             </div>
           </div>
+          <a class="prev" onclick="moveSlides(-1, 'relatedContent')">&#10094;</a>
+          <a class="next" onclick="moveSlides(1, 'relatedContent')">&#10095;</a>
         </div>
         
-        <div class="title">Các game được chơi nhiều nhất</div>
+        <div class="title">Các game cùng nhà phát hành</div>
         <div class="slideshow-container"> 
-          <div class="topGame">
+          <div class="devGame" id="devGame">
             <div class="games">
               <a href="../Products/product.html">
                 <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
@@ -339,11 +341,13 @@
               </a>
             </div>
           </div>
+          <a class="prev" onclick="moveSlides(-1, 'devGame')">&#10094;</a>
+          <a class="next" onclick="moveSlides(1, 'devGame')">&#10095;</a>
         </div>
         
-        <div class="title">Người dùng khác cũng thích</div>
+        <div class="title">Game hành động</div>
         <div class="slideshow-container">
-          <div class="otherUserLike" id="otherUserLike">
+          <div class="tagGame1" id="tagGame1">
             <div class="games">
               <a href="../Products/product.html">
                 <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
@@ -405,8 +409,76 @@
               </a>
             </div>
           </div>
-          <a class="prev" onclick="moveSlides(-1)">&#10094;</a>
-          <a class="next" onclick="moveSlides(1)">&#10095;</a>
+          <a class="prev" onclick="moveSlides(-1, 'tagGame1')">&#10094;</a>
+          <a class="next" onclick="moveSlides(1, 'tagGame1')">&#10095;</a>
+        </div>
+
+        <div class="title">Game hành động</div>
+        <div class="slideshow-container">
+          <div class="tagGame2" id="tagGame2">
+            <div class="games">
+              <a href="../Products/product.html">
+                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
+                <h3>Hero of the Kingdom II</h3>
+              </a>
+            </div>
+            <div class="games">
+              <a href="../Products/product.html">
+                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
+                <h3>Hero of the Kingdom II</h3>
+              </a>
+            </div>
+            <div class="games">
+              <a href="../Products/product.html">
+                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
+                <h3>Hero of the Kingdom II</h3>
+              </a>
+            </div>
+            <div class="games">
+              <a href="../Products/product.html">
+                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
+                <h3>Hero of the Kingdom II</h3>
+              </a>
+            </div>
+            <div class="games">
+              <a href="../Products/product.html">
+                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
+                <h3>Hero of the Kingdom II</h3>
+              </a>
+            </div>
+            <div class="games">
+              <a href="../Products/product.html">
+                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
+                <h3>Hero of the Kingdom II</h3>
+              </a>
+            </div>
+            <div class="games">
+              <a href="../Products/product.html">
+                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
+                <h3>Hero of the Kingdom II</h3>
+              </a>
+            </div>
+            <div class="games">
+              <a href="../Products/product.html">
+                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
+                <h3>Hero of the Kingdom II</h3>
+              </a>
+            </div>
+            <div class="games">
+              <a href="../Products/product.html">
+                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
+                <h3>Hero of the Kingdom II</h3>
+              </a>
+            </div>
+            <div class="games">
+              <a href="../Products/product.html">
+                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
+                <h3>Hero of the Kingdom II</h3>
+              </a>
+            </div>
+          </div>
+          <a class="prev" onclick="moveSlides(-1, 'tagGame2')">&#10094;</a>
+          <a class="next" onclick="moveSlides(1, 'tagGame2')">&#10095;</a>
         </div>
     
     <div class="card-footer" style="background-color: #313234; width: 100%; height:100px; padding: 20px 350px; color: whitesmoke;
