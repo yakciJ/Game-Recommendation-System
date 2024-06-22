@@ -4,13 +4,17 @@
     top: 50%;
     width: auto;
     padding: 16px;
-    margin-top: -22px;
+    margin-top: -43px;
     color: rgb(255, 255, 255) !important;
     font-weight: bold;
     font-size: 18px;
     transition: 0.6s ease;
     user-select: none;
     background-color: rgba(0,0,0,0.5);
+}
+
+#game-price{
+    margin-left: 304px;
 }
   
 .next {
