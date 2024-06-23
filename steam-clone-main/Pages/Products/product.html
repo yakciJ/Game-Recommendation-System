@@ -189,21 +189,32 @@
 
                 
         </div>
-
-        <div id="game-price" style="
-        width: 40%; height: 80px; background-image: linear-gradient(to right, rgb(45, 61, 74) , rgb(87, 101, 116));">
-            <div class="smallFont" style="display: inline-block; font-weight: 600; font-size: 20px; padding-left: 5px; margin-top: 25px;">
-                Purchase Galactic Bowling
-            </div>
-            <div id="price" style="background-color: black; float: right; padding: 5px; margin-top: 20px; margin-right: 20px;">
-                    <span style="color: #c5d3de; position: relative; top: 8px; padding-right: 12px;">$19.99 USD</span>
-
-                <div id="btn-buy" style="float: right;">
-                    <a href="../Checkout/checkout.html">
-                      <button type="button" class="btn btn-success"><span>Buy Game</span></button>
-                    </a>
-                </div>
-            </div>
+        <div style="display: flex;">
+          <div id="game-price" style="
+          width: 40%; height: 80px; background-image: linear-gradient(to right, rgb(45, 61, 74) , rgb(87, 101, 116));">
+              <div class="PurchaseGameName" >
+                  Purchase Galactic Bowling
+              </div>
+              <div id="price" style="background-color: black; float: right; padding: 5px; margin-top: 20px; margin-right: 20px;">
+                      <span style="color: #c5d3de; position: relative; top: 8px; padding-right: 12px;">$19.99 USD</span>
+  
+                  <div id="btn-buy" style="float: right;">
+                      <a href="../Checkout/checkout.html">
+                        <button type="button" class="btn btn-success"><span>Buy Game</span></button>
+                      </a>
+                  </div>
+              </div>
+          </div>
+          <div class="ratingBox">
+            <h1 style="font-size: 20px; color: white;">Đánh giá của bạn</h1>
+            <div class="star-rating">
+              <input type="radio" id="star5" name="rating" value="5"><label for="star5" title="5 stars"></label>
+              <input type="radio" id="star4" name="rating" value="4"><label for="star4" title="4 stars"></label>
+              <input type="radio" id="star3" name="rating" value="3"><label for="star3" title="3 stars"></label>
+              <input type="radio" id="star2" name="rating" value="2"><label for="star2" title="2 stars"></label>
+              <input type="radio" id="star1" name="rating" value="1"><label for="star1" title="1 star"></label>
+          </div>
+          </div>
         </div>
         </div>
 

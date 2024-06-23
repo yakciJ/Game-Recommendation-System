@@ -14,11 +14,15 @@ function openNav() {
     elements[i].style.opacity='100%';
     }
   }
+
+  // ham search
   function redirectToProductPage() {
     const searchInput = document.getElementById('searchInput').value;
     console.log(searchInput)
     window.location.href = '../../Pages/Search/search.html';
   }
+
+// chuyen slide
 
   let slideRelatedContentIndex = 0;
   let slideDevGameIndex = 0;
@@ -65,3 +69,12 @@ function openNav() {
   }
   
   updateSlidePosition(slideName);
+
+// Check diem rating
+const ratingStars = document.querySelectorAll('.star-rating input');
+let ratingValue = 0;
+ratingStars.forEach(star => {
+    star.addEventListener('change', () => {
+        ratingValue = star.value;
+    });
+});

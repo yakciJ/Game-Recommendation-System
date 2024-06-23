@@ -3,27 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Slideshow</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Star Rating</title>
+    <style>
+        .star-rating {
+            direction: rtl;
+            display: inline-flex;
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .star-rating input[type="radio"] {
+            display: none;
+        }
+
+        .star-rating label {
+            color: #ccc;
+            cursor: pointer;
+            padding: 0 0.1rem;
+        }
+
+        .star-rating label:before {
+            content: "★";
+        }
+
+        .star-rating input[type="radio"]:checked ~ label {
+            color: #f5b301;
+        }
+
+        .star-rating input[type="radio"]:checked ~ label:hover,
+        .star-rating input[type="radio"]:checked ~ label:hover ~ label {
+            color: #f5b301;
+        }
+
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            color: #f5b301;
+        }
+    </style>
 </head>
 <body>
-    <div class="slideshow-container">
-        <div class="slider" id="slider">
-            <div class="slide"><img src="https://cdn.akamai.steamstatic.com/steam/apps/457140/header_alt_assets_6.jpg?t=1654189805" alt="Image 1"></div>
-            <div class="slide"><img src="https://cdn.akamai.steamstatic.com/steam/apps/1355720/header.jpg?t=1639875115" alt="Image 2"></div>
-            <div class="slide"><img src="https://cdn.akamai.steamstatic.com/steam/apps/1732930/header.jpg?t=1637149386" alt="Image 3"></div>
-            <div class="slide"><img src="https://cdn.akamai.steamstatic.com/steam/apps/457140/header_alt_assets_6.jpg?t=1654189805" alt="Image 4"></div>
-            <div class="slide"><img src="https://cdn.akamai.steamstatic.com/steam/apps/457140/header_alt_assets_6.jpg?t=1654189805" alt="Image 5"></div>
-            <div class="slide"><img src="https://cdn.akamai.steamstatic.com/steam/apps/457140/header_alt_assets_6.jpg?t=1654189805" alt="Image 6"></div>
-            <div class="slide"><img src="https://cdn.akamai.steamstatic.com/steam/apps/457140/header_alt_assets_6.jpg?t=1654189805" alt="Image 7"></div>
-            <div class="slide"><img src="https://cdn.akamai.steamstatic.com/steam/apps/457140/header_alt_assets_6.jpg?t=1654189805" alt="Image 8"></div>
-            <div class="slide"><img src="https://cdn.akamai.steamstatic.com/steam/apps/457140/header_alt_assets_6.jpg?t=1654189805" alt="Image 9"></div>
-            <div class="slide"><img src="https://cdn.akamai.steamstatic.com/steam/apps/457140/header_alt_assets_6.jpg?t=1654189805" alt="Image 10"></div>
-        </div>
-        <a class="prev" onclick="moveSlides(-1)">&#10094;</a>
-        <a class="next" onclick="moveSlides(1)">&#10095;</a>
+    <div class="star-rating">
+        <input type="radio" id="star5" name="rating" value="5"><label for="star5" title="5 stars">5 stars</label>
+        <input type="radio" id="star4" name="rating" value="4"><label for="star4" title="4 stars">4 stars</label>
+        <input type="radio" id="star3" name="rating" value="3"><label for="star3" title="3 stars">3 stars</label>
+        <input type="radio" id="star2" name="rating" value="2"><label for="star2" title="2 stars">2 stars</label>
+        <input type="radio" id="star1" name="rating" value="1"><label for="star1" title="1 star">1 star</label>
     </div>
+    <p id="rating-value">Your rating: <span id="rating">0</span> stars</p>
 
-    <script src="scripts.js"></script>
+    <script>
+        
+    </script>
 </body>
 </html>
