@@ -9,8 +9,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script><script src="product-js.js"></script>
-         <script src="{% static 'product-js.js' %}"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script><script src="{% static 'product-js.js' %}"></script>
+        <script src="{% static 'product-js.js' %}"></script>
 
         <nav id="menu" class="d-flex navbar navbar-expand-md darkNav navbar-dark">
             <!-- Toggler/collapsibe Button -->
@@ -92,7 +92,7 @@
                 </li>
                 <form action="javascript:void(0);" class="searchBar">
                   <input id="searchInput" type="text" placeholder="Search..">
-                  <button style="background-color: #316282;" class="searchButton" onclick="redirectToProductPage()" type="button"><img width="10px" height="10px" src="https://img.icons8.com/material-rounded/256/search.png"></button>
+                  <button style="background-color: #316282;" class="searchButton" onclick="redirectToSearchPage()" type="button"><img width="10px" height="10px" src="https://img.icons8.com/material-rounded/256/search.png"></button>
                 </form>
               </ul>
             </div>
