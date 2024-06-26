@@ -232,7 +232,15 @@
         <div class="title">Các game liên quan</div>
         <div class="slideshow-container">
           <div class="relatedContent" id="relatedContent">
-            <div class="games">
+            {% for AppId, url, name in similar_games %}
+              <div class="games">
+                <a href="/product/{{ AppId }}/{{ UID }}">
+                  <img class="gameImage" src="{{ url }}" alt="Image 1">
+                  <h3>{{ name }}</h3>
+                </a>
+              </div>
+            {% endfor %}
+            <!-- <div class="games">
               <a href="../Products/product.html">
                 <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/655370/header.jpg?t=1617500526" alt="Image 1">
                 <h3>Train Bandit</h3>
@@ -291,7 +299,7 @@
                 <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/1732930/header.jpg?t=1637149386" alt="Image 1">
                 <h3>Jolt Project</h3>
               </a>
-            </div>
+            </div> -->
           </div>
           <a class="prev" onclick="moveSlides(-1, 'relatedContent')">&#10094;</a>
           <a class="next" onclick="moveSlides(1, 'relatedContent')">&#10095;</a>

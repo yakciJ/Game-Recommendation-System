@@ -38,6 +38,9 @@ with open(current_dir+'/Data/tfidf_feature_names.pkl', 'rb') as f:
 with open(current_dir+'/Data/raw_features.pkl', 'rb') as f:
     raw_features = pickle.load(f)
 
+with open(current_dir+'/Data/feature_words_dict.pkl', 'rb') as f:
+    feature_words_dict = pickle.load(f)
+
 
 
 def create_matrix(users):
@@ -144,7 +147,7 @@ def get_personal_recommendation(userId, uid_idx=uid_idx, idx_aid=idx_aid, id_idx
     return get_most_played(n=n)
   
 #3
-def get_similar_games(AppID, id_idx, idx_id, aid_idx, idx_aid, feature_matrix, game_user_matrix, n=10, weight=0.5):
+def get_similar_games(AppID, id_idx=id_idx, idx_id=idx_id, aid_idx=aid_idx, idx_aid=idx_aid , feature_matrix=tfidf_unique_tags, game_user_matrix=game_user_matrix, n=10, weight=0.5):
   feature_cosine_score = cosine_similarity(feature_matrix[id_idx[AppID]], feature_matrix).flatten()
   feature_cosine_score_list = [(idx_id[i], feature_cosine_score[i]) for i in range(len(feature_cosine_score))]
   for i in feature_cosine_score_list:
