@@ -169,9 +169,14 @@ def get_similar_games(AppID, id_idx=id_idx, idx_id=idx_id, aid_idx=aid_idx, idx_
     if i[0] == AppID:
       feature_cosine_score_list.remove(i)
 
-  item_cosine_score = cosine_similarity(game_user_matrix[aid_idx[AppID]], game_user_matrix).flatten()
+  # item_cosine_score = cosine_similarity(game_user_matrix[aid_idx[AppID]], game_user_matrix).flatten()
+  # item_cosine_score_list = [(idx_aid[i], item_cosine_score[i]) for i in range(len(item_cosine_score))]
+  if AppID in aid_idx.index:
+    item_cosine_score = cosine_similarity(game_user_matrix[aid_idx[AppID]], game_user_matrix).flatten()
+  else:
+    item_cosine_score_list = []
+    item_cosine_score = [ 0 for i in range(game_user_matrix.shape[0])]
   item_cosine_score_list = [(idx_aid[i], item_cosine_score[i]) for i in range(len(item_cosine_score))]
-
 
   for i in item_cosine_score_list:
     if i[0] == AppID:
