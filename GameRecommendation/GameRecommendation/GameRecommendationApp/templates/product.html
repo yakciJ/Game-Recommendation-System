@@ -9,8 +9,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script><script src="{% static 'product-js.js' %}"></script>
-        <script src="{% static 'product-js.js' %}"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script><script src="product-js.js"></script>
+         <script src="{% static 'product-js.js' %}"></script>
 
         <nav id="menu" class="d-flex navbar navbar-expand-md darkNav navbar-dark">
             <!-- Toggler/collapsibe Button -->
@@ -92,7 +92,7 @@
                 </li>
                 <form action="javascript:void(0);" class="searchBar">
                   <input id="searchInput" type="text" placeholder="Search..">
-                  <button style="background-color: #316282;" class="searchButton" onclick="redirectToSearchPage()" type="button"><img width="10px" height="10px" src="https://img.icons8.com/material-rounded/256/search.png"></button>
+                  <button style="background-color: #316282;" class="searchButton" onclick="redirectToProductPage()" type="button"><img width="10px" height="10px" src="https://img.icons8.com/material-rounded/256/search.png"></button>
                 </form>
               </ul>
             </div>
@@ -129,18 +129,6 @@
                 <img src="{{url}}">
               </div>
             {% endfor %}
-            <!-- <div class="carousel-item">
-              <img src="https://cdn.akamai.steamstatic.com/steam/apps/20200/0000005994.1920x1080.jpg?t=1640121033">
-            </div>
-            <div class="carousel-item">
-              <img src="https://cdn.akamai.steamstatic.com/steam/apps/20200/0000005992.1920x1080.jpg?t=1640121033">
-            </div>
-            <div class="carousel-item">
-                <img src="https://cdn.akamai.steamstatic.com/steam/apps/20200/0000006011.1920x1080.jpg?t=1640121033">
-              </div>
-              <div class="carousel-item">
-                <img src="https://cdn.akamai.steamstatic.com/steam/apps/20200/0000006011.1920x1080.jpg?t=1640121033">
-              </div> -->
           </div>
 
           
@@ -158,11 +146,6 @@
               {% for url in screenshots %}
                 <li data-target="#demo" data-slide-to="{{forloop.counter}}" style="background-image: url({{url}});"></li>
               {% endfor %}
-              <!-- <li data-target="#demo" data-slide-to="1" style="background-image: url(https://cdn.akamai.steamstatic.com/steam/apps/20200/0000005994.1920x1080.jpg?t=1640121033);"></li>
-              <li data-target="#demo" data-slide-to="2" style="background-image: url(https://cdn.akamai.steamstatic.com/steam/apps/20200/0000005992.1920x1080.jpg?t=1640121033);"></li>
-              <li data-target="#demo" data-slide-to="3" style="background-image: url(https://cdn.akamai.steamstatic.com/steam/apps/20200/0000006011.1920x1080.jpg?t=1640121033);"></li>
-              <li data-target="#demo" data-slide-to="4" style="background-image: url(https://cdn.akamai.steamstatic.com/steam/apps/20200/0000006011.1920x1080.jpg?t=1640121033);"></li> -->
-  
             </ul>
           </div>
           
@@ -200,14 +183,13 @@
                 
         </div>
         <div style="display: flex;">
-          <div id="game-price" style="
+          <div class="PurchaseGameBox" id="game-price" style="
           width: 40%; height: 80px; background-image: linear-gradient(to right, rgb(45, 61, 74) , rgb(87, 101, 116));">
               <div class="PurchaseGameName" >
-                  Purchase Galactic Bowling
+                  Purchase {{ name }}
               </div>
-              <div id="price" style="background-color: black; float: right; padding: 5px; margin-top: 20px; margin-right: 20px;">
+              <div class="PurchaseGamePrice" id="price" style="background-color: black; float: right; padding: 5px;">
                       <span style="color: #c5d3de; position: relative; top: 8px; padding-right: 12px;">$19.99 USD</span>
-  
                   <div id="btn-buy" style="float: right;">
                       <a href="../Checkout/checkout.html">
                         <button type="button" class="btn btn-success"><span>Buy Game</span></button>
@@ -240,66 +222,6 @@
                 </a>
               </div>
             {% endfor %}
-            <!-- <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/655370/header.jpg?t=1617500526" alt="Image 1">
-                <h3>Train Bandit</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/1732930/header.jpg?t=1637149386" alt="Image 1">
-                <h3>Jolt Project</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/1732930/header.jpg?t=1637149386" alt="Image 1">
-                <h3>Jolt Project</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/1732930/header.jpg?t=1637149386" alt="Image 1">
-                <h3>Jolt Project</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/1732930/header.jpg?t=1637149386" alt="Image 1">
-                <h3>Jolt Project</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/1732930/header.jpg?t=1637149386" alt="Image 1">
-                <h3>Jolt Project</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/1732930/header.jpg?t=1637149386" alt="Image 1">
-                <h3>Jolt Project</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/1732930/header.jpg?t=1637149386" alt="Image 1">
-                <h3>Jolt Project</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/1732930/header.jpg?t=1637149386" alt="Image 1">
-                <h3>Jolt Project</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/1732930/header.jpg?t=1637149386" alt="Image 1">
-                <h3>Jolt Project</h3>
-              </a>
-            </div> -->
           </div>
           <a class="prev" onclick="moveSlides(-1, 'relatedContent')">&#10094;</a>
           <a class="next" onclick="moveSlides(1, 'relatedContent')">&#10095;</a>
@@ -316,73 +238,12 @@
                 </a>
               </div>
             {% endfor %}
-
-            <!-- <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
-                <h3>Hero of the Kingdom II</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
-                <h3>Hero of the Kingdom II</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
-                <h3>Hero of the Kingdom II</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
-                <h3>Hero of the Kingdom II</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
-                <h3>Hero of the Kingdom II</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
-                <h3>Hero of the Kingdom II</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
-                <h3>Hero of the Kingdom II</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
-                <h3>Hero of the Kingdom II</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
-                <h3>Hero of the Kingdom II</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
-                <h3>Hero of the Kingdom II</h3>
-              </a>
-            </div> -->
           </div>
           <a class="prev" onclick="moveSlides(-1, 'devGame')">&#10094;</a>
           <a class="next" onclick="moveSlides(1, 'devGame')">&#10095;</a>
         </div>
         
-        <div class="title">{{ best_feature_1 }}</div>
+        <div class="title">Game thể loại {{ best_feature_1 }}</div>
         <div class="slideshow-container">
           <div class="tagGame1" id="tagGame1">
             {% for AppId, url, name in same_feature_games_1 %}
@@ -393,73 +254,12 @@
                 </a>
               </div>
             {% endfor %}
-
-            <!-- <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
-                <h3>Hero of the Kingdom II</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
-                <h3>Hero of the Kingdom II</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
-                <h3>Hero of the Kingdom II</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
-                <h3>Hero of the Kingdom II</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
-                <h3>Hero of the Kingdom II</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
-                <h3>Hero of the Kingdom II</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
-                <h3>Hero of the Kingdom II</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
-                <h3>Hero of the Kingdom II</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
-                <h3>Hero of the Kingdom II</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
-                <h3>Hero of the Kingdom II</h3>
-              </a>
-            </div> -->
           </div>
           <a class="prev" onclick="moveSlides(-1, 'tagGame1')">&#10094;</a>
           <a class="next" onclick="moveSlides(1, 'tagGame1')">&#10095;</a>
         </div>
 
-        <div class="title">{{ best_feature_2 }}</div>
+        <div class="title">Game thể loại {{ best_feature_2 }}</div>
         <div class="slideshow-container">
           <div class="tagGame2" id="tagGame2">
             {% for AppId, url, name in same_feature_games_2 %}
@@ -470,67 +270,6 @@
                 </a>
               </div>
             {% endfor %}
-
-            <!-- <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
-                <h3>Hero of the Kingdom II</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
-                <h3>Hero of the Kingdom II</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
-                <h3>Hero of the Kingdom II</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
-                <h3>Hero of the Kingdom II</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
-                <h3>Hero of the Kingdom II</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
-                <h3>Hero of the Kingdom II</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
-                <h3>Hero of the Kingdom II</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
-                <h3>Hero of the Kingdom II</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
-                <h3>Hero of the Kingdom II</h3>
-              </a>
-            </div>
-            <div class="games">
-              <a href="../Products/product.html">
-                <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
-                <h3>Hero of the Kingdom II</h3>
-              </a>
-            </div> -->
           </div>
           <a class="prev" onclick="moveSlides(-1, 'tagGame2')">&#10094;</a>
           <a class="next" onclick="moveSlides(1, 'tagGame2')">&#10095;</a>

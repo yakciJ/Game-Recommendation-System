@@ -17,18 +17,6 @@ def get_names(ids):
         names.append(games[games['AppID'] == i]['Name'].values[0])
     return names
 
-def get_ids(names):
-    ids = []
-    for i in names:
-        ids.append(games[games['Name'] == i]['AppID'].values[0])
-    return ids
-
-def get_tags(ids):
-    tags = []
-    for i in ids:
-        tags.append(raw_features[raw_features['AppID'] == i]['Tags'].fillna('').values[0])
-    return tags
-
 def home(request):
     template = loader.get_template('home.html')
     most_played_ids = get_most_played()
@@ -98,17 +86,4 @@ def product(request, AppId, UID):
         'best_feature_1': best_feature_1,
         'best_feature_2': best_feature_2,
     }
-    return HttpResponse(template.render(context, request))
-
-def search(request, query):
-    template = loader.get_template('search.html')
-    names = get_search_list(query)
-    ids = get_ids(names)
-    imgs = get_header_img_urls(ids)
-    tags = get_tags(ids)
-    context = {
-            'UID': UID,
-            'query': query,
-            'games': zip(ids, imgs, names ,tags),
-        }
     return HttpResponse(template.render(context, request))

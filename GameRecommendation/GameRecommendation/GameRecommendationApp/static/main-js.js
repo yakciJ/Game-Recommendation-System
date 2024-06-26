@@ -16,14 +16,7 @@ function closeNav() {
 function redirectToProductPage() {
   const searchInput = document.getElementById('searchInput').value;
   console.log(searchInput)
-  window.location.href = '/search/' + searchInput;
-}
-function redirectToSearchPage() {
-  const searchInput = document.getElementById('searchInput').value;
-  console.log(searchInput)
-  if (searchInput=='')
-    return
-  window.location.href = '/search/' + searchInput;
+  window.location.href = '../../Pages/Search/search.html';
 }
 
 
