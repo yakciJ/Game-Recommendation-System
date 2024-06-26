@@ -16,11 +16,14 @@ function openNav() {
   }
 
   // ham search
-  function redirectToProductPage() {
+  function redirectToSearchPage() {
     const searchInput = document.getElementById('searchInput').value;
     console.log(searchInput)
-    window.location.href = '../../Pages/Search/search.html';
+    if (searchInput=='')
+      return
+    window.location.href = '/search/' + searchInput;
   }
+  
 
 // chuyen slide
 
