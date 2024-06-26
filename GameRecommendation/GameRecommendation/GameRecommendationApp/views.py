@@ -23,7 +23,16 @@ def home(request):
     most_played_header_img = get_header_img_urls(most_played_ids)
     most_played_names = get_names(most_played_ids)
     context = {
-            'most_played_header_img' : most_played_header_img,
-            'most_played_names_header_img': zip(most_played_names, most_played_header_img)
+            'UID': UID,
+            'most_played_ids_header_img' : zip(most_played_ids, most_played_header_img),
+            'most_played_ids_names_header_img': zip(most_played_ids, most_played_names, most_played_header_img)
         }
+    return HttpResponse(template.render(context, request))
+
+def product(request, AppId, UID):
+    name = games[games['AppID'] == AppId]['Name'].values[0]
+    template = loader.get_template('product.html')
+    context = {
+        'name': name
+    }
     return HttpResponse(template.render(context, request))

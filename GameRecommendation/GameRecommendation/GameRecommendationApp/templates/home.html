@@ -185,9 +185,9 @@
           
           <!-- The slideshow -->
           <div class="carousel-inner">
-            {% for url in most_played_header_img %}
+            {% for AppId, url in most_played_ids_header_img %}
               <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                <a href="">
+                <a href="product/{{ AppId }}/{{ UID }}">
                   <img src="{{ url }}">
                 </a>
               </div>
@@ -326,9 +326,9 @@
       <div class="title">Các game được chơi nhiều nhất</div>
       <div class="slideshow-container">
         <div class="topGame" id="topGame">
-          {% for name, url in most_played_names_header_img %}
+          {% for AppId, name, url in most_played_ids_names_header_img %}
             <div class="games">
-              <a href="">
+              <a href="product/{{ AppId }}/{{ UID }}">
                 <img class="gameImage" src="{{ url }}" alt="Image 1">
                 <h3>{{ name }}</h3>
               </a>

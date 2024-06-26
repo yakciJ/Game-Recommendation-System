@@ -9,6 +9,7 @@ import os
 import numpy as np
 
 current_dir = os.path.dirname(__file__)
+UID = 0
 
 with open(current_dir+'/Data/games.pkl', 'rb') as f:
     games = pickle.load(f)
@@ -33,6 +34,8 @@ with open(current_dir+'/Data/idx_id.pkl', 'rb') as f:
 
 with open(current_dir+'/Data/tfidf_feature_names.pkl', 'rb') as f:
     tfidf_feature_names = pickle.load(f)
+
+
 
 def create_matrix(users):
   U = len(users['userId'].unique())
