@@ -305,10 +305,19 @@
           <a class="next" onclick="moveSlides(1, 'relatedContent')">&#10095;</a>
         </div>
         
-        <div class="title">Các game cùng nhà phát hành</div>
+        <div class="title">Game khác của NPH {{ publisher }}</div>
         <div class="slideshow-container"> 
           <div class="devGame" id="devGame">
-            <div class="games">
+            {% for AppId, url, name in same_publisher_games %}
+              <div class="games">
+                <a href="/product/{{ AppId }}/{{ UID }}">
+                  <img class="gameImage" src="{{ url }}" alt="Image 1">
+                  <h3>{{ name }}</h3>
+                </a>
+              </div>
+            {% endfor %}
+
+            <!-- <div class="games">
               <a href="../Products/product.html">
                 <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
                 <h3>Hero of the Kingdom II</h3>
@@ -367,16 +376,25 @@
                 <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
                 <h3>Hero of the Kingdom II</h3>
               </a>
-            </div>
+            </div> -->
           </div>
           <a class="prev" onclick="moveSlides(-1, 'devGame')">&#10094;</a>
           <a class="next" onclick="moveSlides(1, 'devGame')">&#10095;</a>
         </div>
         
-        <div class="title">Game hành động</div>
+        <div class="title">{{ best_feature_1 }}</div>
         <div class="slideshow-container">
           <div class="tagGame1" id="tagGame1">
-            <div class="games">
+            {% for AppId, url, name in same_feature_games_1 %}
+              <div class="games">
+                <a href="/product/{{ AppId }}/{{ UID }}">
+                  <img class="gameImage" src="{{ url }}" alt="Image 1">
+                  <h3>{{ name }}</h3>
+                </a>
+              </div>
+            {% endfor %}
+
+            <!-- <div class="games">
               <a href="../Products/product.html">
                 <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
                 <h3>Hero of the Kingdom II</h3>
@@ -435,16 +453,25 @@
                 <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
                 <h3>Hero of the Kingdom II</h3>
               </a>
-            </div>
+            </div> -->
           </div>
           <a class="prev" onclick="moveSlides(-1, 'tagGame1')">&#10094;</a>
           <a class="next" onclick="moveSlides(1, 'tagGame1')">&#10095;</a>
         </div>
 
-        <div class="title">Game hành động</div>
+        <div class="title">{{ best_feature_2 }}</div>
         <div class="slideshow-container">
           <div class="tagGame2" id="tagGame2">
-            <div class="games">
+            {% for AppId, url, name in same_feature_games_2 %}
+              <div class="games">
+                <a href="/product/{{ AppId }}/{{ UID }}">
+                  <img class="gameImage" src="{{ url }}" alt="Image 1">
+                  <h3>{{ name }}</h3>
+                </a>
+              </div>
+            {% endfor %}
+
+            <!-- <div class="games">
               <a href="../Products/product.html">
                 <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
                 <h3>Hero of the Kingdom II</h3>
@@ -503,7 +530,7 @@
                 <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
                 <h3>Hero of the Kingdom II</h3>
               </a>
-            </div>
+            </div> -->
           </div>
           <a class="prev" onclick="moveSlides(-1, 'tagGame2')">&#10094;</a>
           <a class="next" onclick="moveSlides(1, 'tagGame2')">&#10095;</a>

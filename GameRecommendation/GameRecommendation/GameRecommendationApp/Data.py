@@ -193,11 +193,11 @@ def get_best_feature(id, id_idx, feature_rank=1 , excludes='', matrix=tfidf_dupl
   best_feature = feature_scores[feature_rank-1][0]
   return best_feature
 
-def get_same_feature_games(AppID, aid_idx, idx_aid, feature_rank=1, game_user_matrix=game_user_matrix, n=10):
+def get_same_feature_games(AppID, aid_idx=aid_idx, idx_aid=idx_aid, feature_rank=1, game_user_matrix=game_user_matrix, n=10):
   categories = games_sort_most_played[games_sort_most_played['AppID'] == AppID]['Categories'].values[0]
   best_feature = get_best_feature(AppID, id_idx, feature_rank=feature_rank, excludes=categories, matrix=tfidf_duplicate_tags)
 
-  print(best_feature)
+  #print(best_feature)
   same_feature_games = games_sort_most_played[games_sort_most_played['combined unique tags'].str.contains(best_feature)]['AppID'].values
   same_feature_games = [i for i in same_feature_games if i != AppID]
   if AppID in aid_idx.index:
@@ -214,7 +214,7 @@ def get_same_feature_games(AppID, aid_idx, idx_aid, feature_rank=1, game_user_ma
     sorted_same_feature_games = sorted(sorted_same_feature_games, key=lambda x: x[1], reverse=True)
     same_feature_games = [i[0] for i in sorted_same_feature_games]
 
-  return same_feature_games[:n]
+  return same_feature_games[:n], best_feature
 
 
 
