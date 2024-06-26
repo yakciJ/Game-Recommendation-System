@@ -35,6 +35,9 @@ with open(current_dir+'/Data/idx_id.pkl', 'rb') as f:
 with open(current_dir+'/Data/tfidf_feature_names.pkl', 'rb') as f:
     tfidf_feature_names = pickle.load(f)
 
+with open(current_dir+'/Data/raw_features.pkl', 'rb') as f:
+    raw_features = pickle.load(f)
+
 
 
 def create_matrix(users):
