@@ -7,6 +7,7 @@ import pickle
 import pandas as pd
 import os
 import numpy as np
+import re
 
 current_dir = os.path.dirname(__file__)
 UID = 0
@@ -41,7 +42,20 @@ with open(current_dir+'/Data/raw_features.pkl', 'rb') as f:
 with open(current_dir+'/Data/feature_words_dict.pkl', 'rb') as f:
     feature_words_dict = pickle.load(f)
 
+game_names_list = games_sort_most_played['Name'].values.tolist()
 
+def get_search_list(query , n=50, game_names_list=game_names_list):
+  if isinstance(query, str):
+    query = query.lower()
+  query = re.sub('[^a-zA-Z0-9]', '', query)
+  search_list = []
+  for i in game_names_list:
+    if isinstance(i, str):
+      name = i.lower()
+    name = re.sub('[^a-zA-Z0-9\s]', '', name)
+    if query in name:
+      search_list.append(i)
+  return search_list[:n-1]
 
 def create_matrix(users):
   U = len(users['userId'].unique())
@@ -62,6 +76,7 @@ def create_matrix(users):
   return user_game_matrix, game_user_matrix, uid_idx, aid_idx, idx_uid, idx_aid
 
 user_game_matrix, game_user_matrix, uid_idx, aid_idx, idx_uid, idx_aid = create_matrix(users)
+
 
 def get_cosine_score(id, id_idx, matrix):
   if id not in id_idx.index:
