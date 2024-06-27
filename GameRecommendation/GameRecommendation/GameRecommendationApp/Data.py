@@ -60,9 +60,9 @@ def get_search_list(query , n=50, game_names_list=game_names_list):
 
 # lay cac rating cua user hien tai trong database dua vao dataframe users
 users = users[users['userId'] != UID]
-ratings_current_user = Rating.objects.all().values()
+user_ratings_data = Rating.objects.all().values()
 current_user = []
-for rating in ratings_current_user:
+for rating in user_ratings_data:
     if rating['userId'] != UID:
       continue
     user_dict = {
@@ -84,6 +84,7 @@ for i in current_user:
   users.loc[len(users.index)] = i
 users = users.sort_values(by=['userId', 'AppID'])
 print(users.head())
+
 def create_matrix(users):
   U = len(users['userId'].unique())
   A = len(users['AppID'].unique())

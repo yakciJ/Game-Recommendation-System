@@ -2,9 +2,10 @@ from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
 from django.http import JsonResponse
-from .models import Rating
+from .models import *
 from . import Data
 from .Data import *
+import json
 
 
 def get_header_img_urls(ids):
@@ -31,11 +32,34 @@ def get_tags(ids):
         tags.append(raw_features[raw_features['AppID'] == i]['Tags'].fillna('').values[0])
     return tags
 
+def get_personal_rcm_list(userId=UID):
+    rcm_list_data = PersonalRCM.objects.filter(userId=userId).values()
+    if len(rcm_list_data) > 0:
+        rcm_list_data = rcm_list_data[0]['rcmlist']
+        rcm_list = json.loads(rcm_list_data)
+    else:
+        rcm_list = get_personal_recommendation(userId)
+    return rcm_list
+
+def get_rating(userId, AppID):
+    rating_data = Rating.objects.filter(userId=userId, AppID=AppID).values()
+    if len(rating_data) > 0:
+        return rating_data[0]['rating']
+    else:
+        return 0
+    
+def set_rating(userId, AppID, rating):
+    defaults = {'rating': rating}
+    obj, created = Rating.objects.update_or_create(userId=userId, AppID=AppID, defaults=defaults)
+
+
 def home(request):
     template = loader.get_template('home.html')
+
     most_played_ids = get_most_played()
     most_played_header_img = get_header_img_urls(most_played_ids)
     most_played_names = get_names(most_played_ids)
+
     context = {
             'UID': UID,
             'most_played_ids_header_img' : zip(most_played_ids, most_played_header_img),
@@ -58,6 +82,7 @@ def product(request, AppId, UID):
     screenshots_str = games[games['AppID'] == AppId]['Screenshots'].values[0]
     screenshots = screenshots_str.split(',')
     screenshots = screenshots[:4]
+    rating = get_rating(UID, AppId)
 
     #recommend
     similar_game_ids = get_similar_games(AppId)
@@ -81,6 +106,7 @@ def product(request, AppId, UID):
 
     template = loader.get_template('product.html')
     context = {
+        'AppID': AppId,
         'UID': UID,
         'name': name,
         'header_img': header_img,
@@ -93,6 +119,8 @@ def product(request, AppId, UID):
         'tags': tags,
         'video': video,
         'screenshots': screenshots,
+        'rating': rating,
+        'rating_loop': [5, 4, 3, 2, 1],
         'similar_games': zip(similar_game_ids, similar_game_imgs, similar_game_names),
         'same_publisher_games': zip(same_publisher_game_ids, same_publisher_game_imgs, same_publisher_game_names),
         'same_feature_games_1': zip(same_feature_games_1_ids, same_feature_games_1_imgs, same_feature_games_1_names),
@@ -115,19 +143,14 @@ def search(request, query):
         }
     return HttpResponse(template.render(context, request))
 
+def save_rating(request, userId, AppID, rating):
+    context = {"result": "succeed"}
+    set_rating(userId, AppID, rating)
+    return JsonResponse(context)
+
 def calculate(request, a, b):
     result = a + b
-    ratings = Rating.objects.all().values()
-    user00 = []
-    for rating in ratings:
-        user_dict = {
-            'userId': rating['userId'],
-            'AppID': rating['AppID'],
-            'rating': rating['rating']
-        }
-        user00.append(user_dict)
-
-    # print(ratings)
-    print(user00)
-    print(len(ratings))
+    # ratings = Rating.objects.filter(userId=1).values()
+    # print(len(ratings))
+    print(get_rating(1, 2))
     return JsonResponse({"result": result})
