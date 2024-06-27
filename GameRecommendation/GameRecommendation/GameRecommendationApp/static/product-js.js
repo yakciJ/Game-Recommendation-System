@@ -20,7 +20,7 @@ function openNav() {
     const searchInput = document.getElementById('searchInput').value;
     console.log(searchInput)
     if (searchInput=='')
-      return
+      return;
     window.location.href = '/search/' + searchInput;
   }
   
@@ -74,10 +74,9 @@ function openNav() {
   updateSlidePosition(slideName);
 
 // Check diem rating
-const ratingStars = document.querySelectorAll('.star-rating input');
-let ratingValue = 0;
-ratingStars.forEach(star => {
-    star.addEventListener('change', () => {
-        ratingValue = star.value;
-    });
-});
+
+
+
+
+
+

@@ -2,6 +2,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
 from sklearn.metrics.pairwise import cosine_similarity
 from scipy.sparse import csr_matrix
+from .models import Rating
 
 import pickle
 import pandas as pd
@@ -57,6 +58,32 @@ def get_search_list(query , n=50, game_names_list=game_names_list):
       search_list.append(i)
   return search_list[:n-1]
 
+# lay cac rating cua user hien tai trong database dua vao dataframe users
+users = users[users['userId'] != UID]
+ratings_current_user = Rating.objects.all().values()
+current_user = []
+for rating in ratings_current_user:
+    if rating['userId'] != UID:
+      continue
+    user_dict = {
+        'userId': rating['userId'],
+        'AppID': rating['AppID'],
+        'rating': rating['rating']
+    }
+    current_user.append(user_dict)
+
+#print(current_user)
+if len(current_user) == 0:
+  current_user.append({
+        'userId': UID,
+        'AppID': 730,
+        'rating': 0
+    })
+#print(current_user)
+for i in current_user:
+  users.loc[len(users.index)] = i
+users = users.sort_values(by=['userId', 'AppID'])
+print(users.head())
 def create_matrix(users):
   U = len(users['userId'].unique())
   A = len(users['AppID'].unique())

@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
+from django.http import JsonResponse
+from .models import Rating
 from . import Data
 from .Data import *
 
@@ -112,3 +114,20 @@ def search(request, query):
             'games': zip(ids, imgs, names ,tags),
         }
     return HttpResponse(template.render(context, request))
+
+def calculate(request, a, b):
+    result = a + b
+    ratings = Rating.objects.all().values()
+    user00 = []
+    for rating in ratings:
+        user_dict = {
+            'userId': rating['userId'],
+            'AppID': rating['AppID'],
+            'rating': rating['rating']
+        }
+        user00.append(user_dict)
+
+    # print(ratings)
+    print(user00)
+    print(len(ratings))
+    return JsonResponse({"result": result})
