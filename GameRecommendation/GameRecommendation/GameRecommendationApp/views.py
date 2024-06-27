@@ -38,7 +38,7 @@ def get_personal_rcm_list(userId=UID):
         rcm_list_data = rcm_list_data[0]['rcmlist']
         rcm_list = json.loads(rcm_list_data)
     else:
-        rcm_list = get_personal_recommendation(userId)
+        rcm_list = get_personal_recommendation(userId,uid_idx=uid_idx, idx_aid=idx_aid, id_idx=id_idx, idx_id=idx_id, user_game_matrix=user_game_matrix, feature_matrix=tfidf_unique_tags, n=10)
     return rcm_list
 
 def get_rating(userId, AppID):
@@ -60,10 +60,15 @@ def home(request):
     most_played_header_img = get_header_img_urls(most_played_ids)
     most_played_names = get_names(most_played_ids)
 
+    personal_rcm_ids = get_personal_rcm_list()
+    personal_rcm_imgs = get_header_img_urls(personal_rcm_ids)
+    personal_rcm_names = get_names(personal_rcm_ids)
+
     context = {
             'UID': UID,
             'most_played_ids_header_img' : zip(most_played_ids, most_played_header_img),
-            'most_played_ids_names_header_img': zip(most_played_ids, most_played_names, most_played_header_img)
+            'most_played_ids_names_header_img': zip(most_played_ids, most_played_names, most_played_header_img),
+            'personal_rcm_games': zip(personal_rcm_ids, personal_rcm_imgs, personal_rcm_names),
         }
     return HttpResponse(template.render(context, request))
 
@@ -146,6 +151,14 @@ def search(request, query):
 def save_rating(request, userId, AppID, rating):
     context = {"result": "succeed"}
     set_rating(userId, AppID, rating)
+    users = reset_users_dataframe()
+    #Data.Test()
+    user_game_matrix, game_user_matrix, uid_idx, aid_idx, idx_uid, idx_aid = create_matrix(users)
+    personal_rcm_ids = get_personal_recommendation(userId,uid_idx=uid_idx, idx_aid=idx_aid, id_idx=id_idx, idx_id=idx_id, user_game_matrix=user_game_matrix, feature_matrix=tfidf_unique_tags, n=10)
+    personal_rcm_ids = [int(i) for i in personal_rcm_ids]
+    print('pri',personal_rcm_ids)
+    rcm_list = json.dumps(personal_rcm_ids)
+    obj, created = PersonalRCM.objects.update_or_create(userId=userId, defaults={'rcmlist': rcm_list})
     return JsonResponse(context)
 
 def calculate(request, a, b):

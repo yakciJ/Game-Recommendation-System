@@ -59,31 +59,37 @@ def get_search_list(query , n=50, game_names_list=game_names_list):
   return search_list[:n-1]
 
 # lay cac rating cua user hien tai trong database dua vao dataframe users
-users = users[users['userId'] != UID]
-user_ratings_data = Rating.objects.all().values()
-current_user = []
-for rating in user_ratings_data:
-    if rating['userId'] != UID:
-      continue
-    user_dict = {
-        'userId': rating['userId'],
-        'AppID': rating['AppID'],
-        'rating': rating['rating']
-    }
-    current_user.append(user_dict)
+def reset_users_dataframe(users=users):
+  users = users[users['userId'] != UID]
+  user_ratings_data = Rating.objects.all().values()
+  current_user = []
+  for rating in user_ratings_data:
+      if rating['userId'] != UID:
+        continue
+      user_dict = {
+          'userId': rating['userId'],
+          'AppID': rating['AppID'],
+          'rating': rating['rating']
+      }
+      current_user.append(user_dict)
 
-#print(current_user)
-if len(current_user) == 0:
-  current_user.append({
-        'userId': UID,
-        'AppID': 730,
-        'rating': 0
-    })
-#print(current_user)
-for i in current_user:
-  users.loc[len(users.index)] = i
-users = users.sort_values(by=['userId', 'AppID'])
-print(users.head())
+  #print(current_user)
+  if len(current_user) == 0:
+    current_user.append({
+          'userId': UID,
+          'AppID': 730,
+          'rating': 0
+      })
+  #print(current_user)
+  for i in current_user:
+    users.loc[len(users.index)] = i
+  users = users.sort_values(by=['userId', 'AppID'])
+  print(users.head())
+  return users
+
+users = reset_users_dataframe()
+def Test():
+  print(users.head())
 
 def create_matrix(users):
   U = len(users['userId'].unique())
@@ -122,26 +128,58 @@ def get_most_similar(id, id_idx, idx_id, matrix, n=10):
   top_n_ids = [idx_id[i] for i in top_n_indices]
   return top_n_ids
 
+# def get_collaborative_recommendation(userId, uid_idx, idx_aid, matrix, n=10):
+#   if userId not in uid_idx.index:
+#     return None
+#   uidx = uid_idx[userId]
+#   user_scores = cosine_similarity(matrix[uidx], matrix)
+#   user_scores = np.delete(user_scores, uidx)
+#   predicted_rating_list = []
+#   for i in range(matrix.shape[1]):
+#     if matrix[uidx, i] == 0:
+#       user_ratings = matrix[:, i]
+#       user_ratings = user_ratings.toarray().flatten()
+#       user_ratings = np.delete(user_ratings, uidx)
+#       weight_sum = np.dot(user_scores, user_ratings)
+#       sum_of_scores = np.sum(user_scores)
+#       predicted_rating = 0
+#       if sum_of_scores != 0:
+#         predicted_rating = weight_sum / sum_of_scores
+#       predicted_rating_list.append((i, predicted_rating))
+
+#   predicted_rating_list = sorted(predicted_rating_list, key=lambda x: x[1], reverse=True)
+#   top_n_indices = [i[0] for i in predicted_rating_list[1:n+1]]
+#   top_n_ids = [idx_aid[i] for i in top_n_indices]
+#   return top_n_ids
+
 def get_collaborative_recommendation(userId, uid_idx, idx_aid, matrix, n=10):
   if userId not in uid_idx.index:
     return None
   uidx = uid_idx[userId]
-  user_scores = cosine_similarity(matrix[uidx], matrix)
-  user_scores = np.delete(user_scores, uidx)
+  user_scores = cosine_similarity(matrix[uidx], matrix).flatten()
+  user_scores = list(enumerate(user_scores))
+  user_scores_sorted = sorted(user_scores, key=lambda x: x[1], reverse=True)
+  user_index = [i[0] for i in user_scores_sorted][1:11]
+  user_scores = [i[1] for i in user_scores if i[0] in user_index]
+
   predicted_rating_list = []
   for i in range(matrix.shape[1]):
     if matrix[uidx, i] == 0:
       user_ratings = matrix[:, i]
       user_ratings = user_ratings.toarray().flatten()
-      user_ratings = np.delete(user_ratings, uidx)
+      user_ratings = list(enumerate(user_ratings))
+      user_ratings = [j[1] for j in user_ratings if j[0] in user_index]
       weight_sum = np.dot(user_scores, user_ratings)
       sum_of_scores = np.sum(user_scores)
       predicted_rating = 0
       if sum_of_scores != 0:
         predicted_rating = weight_sum / sum_of_scores
       predicted_rating_list.append((i, predicted_rating))
+    # else:
+    #   predicted_rating_list.append((i, matrix[uidx, i]))
 
   predicted_rating_list = sorted(predicted_rating_list, key=lambda x: x[1], reverse=True)
+  print(predicted_rating_list)
   top_n_indices = [i[0] for i in predicted_rating_list[1:n+1]]
   top_n_ids = [idx_aid[i] for i in top_n_indices]
   return top_n_ids
@@ -176,17 +214,18 @@ def get_personal_recommendation(userId, uid_idx=uid_idx, idx_aid=idx_aid, id_idx
   ratings_list = [(idx_aid[i], ratings[i]) for i in range(len(ratings))]
   ratings_list = [i for i in ratings_list if i[1] != 0]
   if len(ratings_list) >= 5:
-    #print(1)
+    print("method: ", 1)
     return get_collaborative_recommendation(userId, uid_idx, idx_aid, user_game_matrix, n=n)
   elif len(ratings_list) != 0:
-    #print(2)
+    print("method: ", 2)
     appId_list = [i for i in ratings_list if i[1] >= 3]
     if (len(appId_list) == 0):
       highest_rating = max([i[1] for i in ratings_list])
       appId_list = [i for i in ratings_list if i[1] == highest_rating]
     return get_content_based_recommendation(appId_list, id_idx, idx_id, feature_matrix, n=n)
   else:
-    #print(3)
+    print("method: ", 3)
+    print(get_most_played(n=n))
     return get_most_played(n=n)
   
 #3

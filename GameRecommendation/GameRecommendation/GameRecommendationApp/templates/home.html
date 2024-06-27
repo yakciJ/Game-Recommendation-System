@@ -313,7 +313,16 @@
       <div class="title">Dành cho bạn</div>
       <div class="slideshow-container">
         <div class="gameForU" id="gameForU">
-          <div class="games">
+          {% for AppId, url, name in personal_rcm_games %}
+            <div class="games">
+              <a href="product/{{ AppId }}/{{ UID }}">
+                <img class="gameImage" src="{{ url }}" alt="Image 1">
+                <h3>{{ name }}</h3>
+              </a>
+            </div>
+          {% endfor %}
+
+          <!-- <div class="games">
             <a href="../Products/product.html">
               <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
               <h3>Hero of the Kingdom II</h3>
@@ -372,7 +381,7 @@
               <img class="gameImage" src="https://cdn.akamai.steamstatic.com/steam/apps/346560/header.jpg?t=1635411355" alt="Image 1">
               <h3>Hero of the Kingdom II</h3>
             </a>
-          </div>
+          </div> -->
         </div>
         <a class="prev" onclick="moveSlides(-1, 'gameForU')">&#10094;</a>
         <a class="next" onclick="moveSlides(1, 'gameForU')">&#10095;</a>
