@@ -165,18 +165,14 @@ def get_collaborative_recommendation(userId, uid_idx, idx_aid, matrix, n=10):
   predicted_rating_list = []
   for i in range(matrix.shape[1]):
     if matrix[uidx, i] == 0:
-      user_ratings = matrix[:, i]
-      user_ratings = user_ratings.toarray().flatten()
-      user_ratings = list(enumerate(user_ratings))
-      user_ratings = [j[1] for j in user_ratings if j[0] in user_index]
+      user_ratings = [matrix[j, i] for j in sorted(user_index, key=lambda x: x, reverse=False)]
+
       weight_sum = np.dot(user_scores, user_ratings)
       sum_of_scores = np.sum(user_scores)
       predicted_rating = 0
       if sum_of_scores != 0:
         predicted_rating = weight_sum / sum_of_scores
       predicted_rating_list.append((i, predicted_rating))
-    # else:
-    #   predicted_rating_list.append((i, matrix[uidx, i]))
 
   predicted_rating_list = sorted(predicted_rating_list, key=lambda x: x[1], reverse=True)
   print(predicted_rating_list)
