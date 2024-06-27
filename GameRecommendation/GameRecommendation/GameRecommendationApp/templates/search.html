@@ -51,24 +51,24 @@
               <ul class="navbar-nav pt-1">
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#" data-toggle="dropdown">
-                      Store
+                      Cửa hàng
                     </a>
                     
                   </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Support</a>
+                    <a class="nav-link" href="#">Hỗ trợ</a>
                   </li>
                 <li class="nav-item dropdown">
-                  <a class="nav-link" href="#">Account</a>
+                  <a class="nav-link" href="#">Tài khoản</a>
 
                   
                 </li>
                 
                 <li class="nav-item">
-                  <a class="nav-link" href="../About/about.html">About</a>
+                  <a class="nav-link" href="../About/about.html">Thông tin</a>
                 </li>
                 <form action="javascript:void(0);" class="searchBar">
-                  <input id="searchInput" type="text" placeholder="Search..">
+                  <input id="searchInput" type="text" placeholder="Tìm kiếm..">
                   <button style="background-color: #316282;" class="searchButton" onclick="redirectToSearchPage()" type="button"><img width="10px" height="10px" src="https://img.icons8.com/material-rounded/256/search.png"></button>
                 </form>
               </ul>
@@ -76,13 +76,13 @@
         </div>
 
         <button type="button" class="d-none d-md-block btn btn-success" data-target="#">
-            <img width="15px" height="15px" src="https://img.icons8.com/material-sharp/256/download--v1.png">Install Steam</button>
+            <img width="15px" height="15px" src="https://img.icons8.com/material-sharp/256/download--v1.png">Cài đặt Steam</button>
           </nav>
     </head>
     
     <body id="body" style="background-color: #1b2838;">
       <div class="main-content">
-        <div style="color: white; margin-left: 400px; margin-top: 5px; margin-bottom: 5px; font-size: 25px;">Hiển thị 10 kết quả gần nhất với {{ query }}:</div>
+        <div style="color: white; margin-left: 400px; margin-top: 5px; margin-bottom: 5px; font-size: 25px;">Hiển thị các kết quả tìm kiếm với {{ query }}:</div>
         <ul class="box">
           {% for AppId, url, name, tags in games %}
             <li class="mini-box">
@@ -95,97 +95,6 @@
               </a>
             </li>
           {% endfor %}
-
-          <!-- <li class="mini-box">
-            <a href="../../Pages/Products/product.html">
-              <img src="https://cdn.akamai.steamstatic.com/steam/apps/457140/header_alt_assets_6.jpg?t=1654189805" alt="">
-              <div class="gameInfo">
-                <h1 class="gameName">Oxygen Not Included</h1>
-                <h2 class="gameCategories">Categories: Colony Sim, Base-Building, Survival, Resource Management, Building, Singleplayer, Management, Simulation, 2D, Sandbox, Strategy, Space, Indie, Sci-fi, Exploration, Open World, Difficult,Adventure,Early Access,Multiplayer</h2>
-              </div>
-            </a>
-          </li>
-          <li class="mini-box">
-            <a href="../../Pages/Products/product.html">
-              <img src="https://cdn.akamai.steamstatic.com/steam/apps/457140/header_alt_assets_6.jpg?t=1654189805" alt="">
-              <div class="gameInfo">
-                <h1 class="gameName">Oxygen Not Included</h1>
-                <h2 class="gameCategories">Categories: Colony Sim, Base-Building, Survival, Resource Management, Building, Singleplayer, Management, Simulation, 2D, Sandbox, Strategy, Space, Indie, Sci-fi, Exploration, Open World, Difficult,Adventure,Early Access,Multiplayer</h2>
-              </div>
-            </a>
-          </li>
-          <li class="mini-box">
-            <a href="../../Pages/Products/product.html">
-              <img src="https://cdn.akamai.steamstatic.com/steam/apps/457140/header_alt_assets_6.jpg?t=1654189805" alt="">
-              <div class="gameInfo">
-                <h1 class="gameName">Oxygen Not Included</h1>
-                <h2 class="gameCategories">Categories: Colony Sim, Base-Building, Survival, Resource Management, Building, Singleplayer, Management, Simulation, 2D, Sandbox, Strategy, Space, Indie, Sci-fi, Exploration, Open World, Difficult,Adventure,Early Access,Multiplayer</h2>
-              </div>
-            </a>
-          </li>
-          <li class="mini-box">
-            <a href="../../Pages/Products/product.html">
-              <img src="https://cdn.akamai.steamstatic.com/steam/apps/457140/header_alt_assets_6.jpg?t=1654189805" alt="">
-              <div class="gameInfo">
-                <h1 class="gameName">Oxygen Not Included</h1>
-                <h2 class="gameCategories">Categories: Colony Sim, Base-Building, Survival, Resource Management, Building, Singleplayer, Management, Simulation, 2D, Sandbox, Strategy, Space, Indie, Sci-fi, Exploration, Open World, Difficult,Adventure,Early Access,Multiplayer</h2>
-              </div>
-            </a>
-          </li>
-          <li class="mini-box">
-            <a href="../../Pages/Products/product.html">
-              <img src="https://cdn.akamai.steamstatic.com/steam/apps/457140/header_alt_assets_6.jpg?t=1654189805" alt="">
-              <div class="gameInfo">
-                <h1 class="gameName">Oxygen Not Included</h1>
-                <h2 class="gameCategories">Categories: Colony Sim, Base-Building, Survival, Resource Management, Building, Singleplayer, Management, Simulation, 2D, Sandbox, Strategy, Space, Indie, Sci-fi, Exploration, Open World, Difficult,Adventure,Early Access,Multiplayer</h2>
-              </div>
-            </a>
-          </li>
-          <li class="mini-box">
-            <a href="../../Pages/Products/product.html">
-              <img src="https://cdn.akamai.steamstatic.com/steam/apps/457140/header_alt_assets_6.jpg?t=1654189805" alt="">
-              <div class="gameInfo">
-                <h1 class="gameName">Oxygen Not Included</h1>
-                <h2 class="gameCategories">Categories: Colony Sim, Base-Building, Survival, Resource Management, Building, Singleplayer, Management, Simulation, 2D, Sandbox, Strategy, Space, Indie, Sci-fi, Exploration, Open World, Difficult,Adventure,Early Access,Multiplayer</h2>
-              </div>
-            </a>
-          </li>
-          <li class="mini-box">
-            <a href="../../Pages/Products/product.html">
-              <img src="https://cdn.akamai.steamstatic.com/steam/apps/457140/header_alt_assets_6.jpg?t=1654189805" alt="">
-              <div class="gameInfo">
-                <h1 class="gameName">Oxygen Not Included</h1>
-                <h2 class="gameCategories">Categories: Colony Sim, Base-Building, Survival, Resource Management, Building, Singleplayer, Management, Simulation, 2D, Sandbox, Strategy, Space, Indie, Sci-fi, Exploration, Open World, Difficult,Adventure,Early Access,Multiplayer</h2>
-              </div>
-            </a>
-          </li>
-          <li class="mini-box">
-            <a href="../../Pages/Products/product.html">
-              <img src="https://cdn.akamai.steamstatic.com/steam/apps/457140/header_alt_assets_6.jpg?t=1654189805" alt="">
-              <div class="gameInfo">
-                <h1 class="gameName">Oxygen Not Included</h1>
-                <h2 class="gameCategories">Categories: Colony Sim, Base-Building, Survival, Resource Management, Building, Singleplayer, Management, Simulation, 2D, Sandbox, Strategy, Space, Indie, Sci-fi, Exploration, Open World, Difficult,Adventure,Early Access,Multiplayer</h2>
-              </div>
-            </a>
-          </li>
-          <li class="mini-box">
-            <a href="../../Pages/Products/product.html">
-              <img src="https://cdn.akamai.steamstatic.com/steam/apps/457140/header_alt_assets_6.jpg?t=1654189805" alt="">
-              <div class="gameInfo">
-                <h1 class="gameName">Oxygen Not Included</h1>
-                <h2 class="gameCategories">Categories: Colony Sim, Base-Building, Survival, Resource Management, Building, Singleplayer, Management, Simulation, 2D, Sandbox, Strategy, Space, Indie, Sci-fi, Exploration, Open World, Difficult,Adventure,Early Access,Multiplayer</h2>
-              </div>
-            </a>
-          </li>
-          <li class="mini-box">
-            <a href="../../Pages/Products/product.html">
-              <img src="https://cdn.akamai.steamstatic.com/steam/apps/457140/header_alt_assets_6.jpg?t=1654189805" alt="">
-              <div class="gameInfo">
-                <h1 class="gameName">Oxygen Not Included</h1>
-                <h2 class="gameCategories">Categories: Colony Sim, Base-Building, Survival, Resource Management, Building, Singleplayer, Management, Simulation, 2D, Sandbox, Strategy, Space, Indie, Sci-fi, Exploration, Open World, Difficult,Adventure,Early Access,Multiplayer</h2>
-              </div>
-            </a>
-          </li> -->
         </ul>
       </div>
       <footer class="footer">
@@ -198,9 +107,9 @@
             <img  src="https://store.cloudflare.steamstatic.com/public/images/v6/logo_steam_footer.png" alt="Valve Software" width="92px" height="26px">
           </div>
         <span>
-          © 2023 Valve Corporation. All rights reserved. All trademarks are property of their respective owners in the US and other countries
-          <br>
-          VAT included in all prices where applicable.
+          © 2024 Valve Corporation. Bảo lưu mọi quyền. Tất cả các thương hiệu là tài sản của chủ sở hữu tương ứng tại Hoa Kỳ và các quốc gia khác.
+        <br>
+        Giá đã bao gồm VAT (nếu có).
         </span>
         </div>
       </footer>
