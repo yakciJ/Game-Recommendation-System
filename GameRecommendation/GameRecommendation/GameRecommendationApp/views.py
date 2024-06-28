@@ -107,6 +107,7 @@ def product(request, AppId, UID):
     release = games[games['AppID'] == AppId]['Release date'].values[0]
     developer = games[games['AppID'] == AppId]['Developers'].values[0]
     publisher = games[games['AppID'] == AppId]['Publishers'].values[0]
+    price = games[games['AppID'] == AppId]['Price'].values[0]
     categories = raw_features[raw_features['AppID'] == AppId]['Categories'].values[0]
     genres = raw_features[raw_features['AppID'] == AppId]['Genres'].values[0]
     tags = raw_features[raw_features['AppID'] == AppId]['Tags'].values[0]
@@ -115,6 +116,7 @@ def product(request, AppId, UID):
     screenshots = screenshots_str.split(',')
     screenshots = screenshots[:4]
     rating = get_rating(UID, AppId)
+
 
     #recommend
     similar_game_ids = get_similar_games(AppId)
@@ -146,6 +148,7 @@ def product(request, AppId, UID):
         'release': release,
         'developer': developer,
         'publisher': publisher,
+        'price': price,
         'categories': categories,
         'genres' : genres,
         'tags': tags,
