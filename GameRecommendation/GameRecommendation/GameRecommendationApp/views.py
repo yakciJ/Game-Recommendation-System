@@ -6,7 +6,12 @@ from .models import *
 from . import Data
 from .Data import *
 import json
+import threading
 
+is_last_update = []
+update_counter = 0
+lock = threading.Lock()
+update_counter_lock = threading.Lock()
 
 def get_header_img_urls(ids):
     urls = []
@@ -52,6 +57,28 @@ def set_rating(userId, AppID, rating):
     defaults = {'rating': rating}
     obj, created = Rating.objects.update_or_create(userId=userId, AppID=AppID, defaults=defaults)
 
+def update_persional_rcm_list(userId):
+    global is_last_update
+    global update_counter
+    if len(is_last_update) > 0:
+        is_last_update[len(is_last_update) - 1] = False
+    is_last_update.append(True)
+    index = len(is_last_update) - 1
+    
+    users = reset_users_dataframe()
+    #Data.Test()
+    user_game_matrix, game_user_matrix, uid_idx, aid_idx, idx_uid, idx_aid = create_matrix(users)
+    personal_rcm_ids = get_personal_recommendation(userId,uid_idx=uid_idx, idx_aid=idx_aid, id_idx=id_idx, idx_id=idx_id, user_game_matrix=user_game_matrix, feature_matrix=tfidf_unique_tags, n=10)
+    personal_rcm_ids = [int(i) for i in personal_rcm_ids]
+    print('pri',personal_rcm_ids)
+    # with lock:
+    if is_last_update[index]:
+        rcm_list = json.dumps(personal_rcm_ids)
+        obj, created = PersonalRCM.objects.update_or_create(userId=userId, defaults={'rcmlist': rcm_list})
+    update_counter -= 1
+    if update_counter == 0:
+        is_last_update = []
+    
 
 def home(request):
     template = loader.get_template('home.html')
@@ -149,16 +176,13 @@ def search(request, query):
     return HttpResponse(template.render(context, request))
 
 def save_rating(request, userId, AppID, rating):
-    context = {"result": "succeed"}
     set_rating(userId, AppID, rating)
-    users = reset_users_dataframe()
-    #Data.Test()
-    user_game_matrix, game_user_matrix, uid_idx, aid_idx, idx_uid, idx_aid = create_matrix(users)
-    personal_rcm_ids = get_personal_recommendation(userId,uid_idx=uid_idx, idx_aid=idx_aid, id_idx=id_idx, idx_id=idx_id, user_game_matrix=user_game_matrix, feature_matrix=tfidf_unique_tags, n=10)
-    personal_rcm_ids = [int(i) for i in personal_rcm_ids]
-    print('pri',personal_rcm_ids)
-    rcm_list = json.dumps(personal_rcm_ids)
-    obj, created = PersonalRCM.objects.update_or_create(userId=userId, defaults={'rcmlist': rcm_list})
+    # with update_counter_lock:
+    global update_counter 
+    update_counter += 1
+    thread = threading.Thread(target=update_persional_rcm_list, args=(userId,))
+    thread.start()
+    context = {"result": "succeed"}
     return JsonResponse(context)
 
 def calculate(request, a, b):

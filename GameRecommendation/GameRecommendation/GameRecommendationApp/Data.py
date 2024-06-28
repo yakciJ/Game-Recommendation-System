@@ -175,7 +175,7 @@ def get_collaborative_recommendation(userId, uid_idx, idx_aid, matrix, n=10):
       predicted_rating_list.append((i, predicted_rating))
 
   predicted_rating_list = sorted(predicted_rating_list, key=lambda x: x[1], reverse=True)
-  print(predicted_rating_list)
+  #print(predicted_rating_list)
   top_n_indices = [i[0] for i in predicted_rating_list[1:n+1]]
   top_n_ids = [idx_aid[i] for i in top_n_indices]
   return top_n_ids
@@ -266,6 +266,23 @@ def get_same_publishers(AppID, n=10):
   id_list = [i for i in id_list if i != AppID]
   return id_list[:n]
 
+# from sklearn.feature_extraction.text import CountVectorizer
+# cv = CountVectorizer(stop_words='english')
+# count_dup_tags = cv.fit_transform(games['combined duplicate tags'])
+# count_unique_tags = cv.fit_transform(games['combined unique tags'])
+# cv_combined_feature = cv.get_feature_names_out()
+# count_only_tags = cv.fit_transform(games['Tags'])
+# cv_tags_feature = cv.get_feature_names_out()
+
+# def get_best_feature_cv(id, id_idx, feature_rank=1 , excludes='', matrix=count_dup_tags, feature_names=cv_combined_feature):
+#   idx = id_idx[id]
+#   feature_scores = matrix[idx].toarray().flatten()
+#   feature_scores = list(zip(feature_names, feature_scores))
+#   feature_scores = [i for i in feature_scores if i[0] not in excludes]
+#   feature_scores = sorted(feature_scores, key=lambda x: x[1], reverse=True)
+#   best_feature = feature_scores[feature_rank-1][0]
+#   return best_feature
+
 def get_best_feature(id, id_idx, feature_rank=1 , excludes='', matrix=tfidf_duplicate_tags):
   idx = id_idx[id]
   feature_scores = matrix[idx].toarray().flatten()
@@ -274,6 +291,9 @@ def get_best_feature(id, id_idx, feature_rank=1 , excludes='', matrix=tfidf_dupl
   feature_scores = [i for i in feature_scores if i[0] not in excludes]
   feature_scores = sorted(feature_scores, key=lambda x: x[1], reverse=True)
   best_feature = feature_scores[feature_rank-1][0]
+  # print('dup: ', get_best_feature_cv(id, id_idx, feature_rank , excludes, matrix=count_dup_tags))
+  # print('unq: ', get_best_feature_cv(id, id_idx, feature_rank , excludes, matrix=count_unique_tags))
+  # print('tags: ', get_best_feature_cv(id, id_idx, feature_rank , excludes, matrix=count_only_tags, feature_names=cv_tags_feature))
   return best_feature
 
 def get_same_feature_games(AppID, aid_idx=aid_idx, idx_aid=idx_aid, feature_rank=1, game_user_matrix=game_user_matrix, n=10):

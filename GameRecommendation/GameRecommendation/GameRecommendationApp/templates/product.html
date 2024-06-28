@@ -210,10 +210,12 @@
                     AppID = "{{AppID}}"
                     rating = star.value;
                     console.log(star.value);
+                    
                     fetch('/saveRating/'+userId+'/'+AppID+'/'+rating).
                       then(response => 
                         response.json()).
                       then(data =>{
+                        alert('Bạn vừa đánh giá ' + star.value + ' sao cho {{name}}')
                         console.log(data.result)
                       });
                     // fetch('/calculate/'+ratingValue+'/'+ratingValue+'/').
