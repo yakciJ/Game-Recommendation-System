@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-_85meh(mj%y*_x)i7abw402w-$8=**9(x=%n)n^b%_6$d#o)+5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# local / github
+RCM_DATA_SOURCE = "local"
+
+ALLOWED_HOSTS = ['gamers.pythonanywhere.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -117,6 +120,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

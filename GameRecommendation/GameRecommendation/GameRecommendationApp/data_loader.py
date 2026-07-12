@@ -1,5 +1,8 @@
+from django.conf import settings
+
 import pickle
 import requests
+import os
 
 
 class RecommendationData:
@@ -47,14 +50,60 @@ class RecommendationData:
         response.raise_for_status()
 
         return pickle.loads(response.content)
-
+    
 
     def load(self):
-
         if self.loaded:
             return
+        
+        print("RCM_DATA_SOURCE =" + settings.RCM_DATA_SOURCE)
+        if settings.RCM_DATA_SOURCE == "local":
+            self.load_local()
+        else:
+            self.load_github()
 
-        print("Loading recommendation data...")
+        self.loaded = True
+        print("Recommendation data loaded.")
+
+    def load_local(self):
+        current_dir = os.path.dirname(__file__)
+
+        print("Loading recommendation data from local...")
+
+        with open(current_dir+'/Data/games.pkl', 'rb') as f:
+            self.games = pickle.load(f)
+
+        with open(current_dir+'/Data/users.pkl', 'rb') as f:
+            self.users = pickle.load(f)
+
+        with open(current_dir+'/Data/games_sort_most_played.pkl', 'rb') as f:
+            self.games_sort_most_played = pickle.load(f)
+
+        with open(current_dir+'/Data/tfidf_unique_tags.pkl', 'rb') as f:
+            self.tfidf_unique_tags = pickle.load(f)
+
+        with open(current_dir+'/Data/tfidf_duplicate_tags.pkl', 'rb') as f:
+            self.tfidf_duplicate_tags = pickle.load(f)
+
+        with open(current_dir+'/Data/id_idx.pkl', 'rb') as f:
+            self.id_idx = pickle.load(f)
+
+        with open(current_dir+'/Data/idx_id.pkl', 'rb') as f:
+            self.idx_id = pickle.load(f)
+
+        with open(current_dir+'/Data/tfidf_feature_names.pkl', 'rb') as f:
+            self.tfidf_feature_names = pickle.load(f)
+
+        with open(current_dir+'/Data/raw_features.pkl', 'rb') as f:
+            self.raw_features = pickle.load(f)
+
+        with open(current_dir+'/Data/feature_words_dict.pkl', 'rb') as f:
+            self.feature_words_dict = pickle.load(f)
+
+
+    def load_github(self):
+
+        print("Loading recommendation data from Github Releases...")
 
         self.games = self.load_pickle(
             self.FILES["games"]
@@ -95,10 +144,6 @@ class RecommendationData:
         self.feature_words_dict = self.load_pickle(
             self.FILES["feature_words_dict"]
         )
-
-        self.loaded = True
-
-        print("Recommendation data loaded.")
 
 
 recommendation_data = RecommendationData()

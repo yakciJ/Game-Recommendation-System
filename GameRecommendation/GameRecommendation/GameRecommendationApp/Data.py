@@ -6,44 +6,11 @@ from .models import Rating
 
 from .data_loader import recommendation_data
 
-import pickle
 import pandas as pd
-import os
 import numpy as np
 import re
 
-current_dir = os.path.dirname(__file__)
 UID = 0
-
-# with open(current_dir+'/Data/games.pkl', 'rb') as f:
-#     games = pickle.load(f)
-
-# with open(current_dir+'/Data/users.pkl', 'rb') as f:
-#     users = pickle.load(f)
-
-# with open(current_dir+'/Data/games_sort_most_played.pkl', 'rb') as f:
-#     games_sort_most_played = pickle.load(f)
-
-# with open(current_dir+'/Data/tfidf_unique_tags.pkl', 'rb') as f:
-#     tfidf_unique_tags = pickle.load(f)
-
-# with open(current_dir+'/Data/tfidf_duplicate_tags.pkl', 'rb') as f:
-#     tfidf_duplicate_tags = pickle.load(f)
-
-# with open(current_dir+'/Data/id_idx.pkl', 'rb') as f:
-#     id_idx = pickle.load(f)
-
-# with open(current_dir+'/Data/idx_id.pkl', 'rb') as f:
-#     idx_id = pickle.load(f)
-
-# with open(current_dir+'/Data/tfidf_feature_names.pkl', 'rb') as f:
-#     tfidf_feature_names = pickle.load(f)
-
-# with open(current_dir+'/Data/raw_features.pkl', 'rb') as f:
-#     raw_features = pickle.load(f)
-
-# with open(current_dir+'/Data/feature_words_dict.pkl', 'rb') as f:
-#     feature_words_dict = pickle.load(f)
 
 games = recommendation_data.games
 
